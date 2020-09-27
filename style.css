@@ -1,0 +1,187 @@
+:root {
+    --color-dark: rgb(105, 105, 105);
+    --color-middle: rgb(163, 163, 163);
+    --color-light: rgb(197, 197, 197);
+
+    --height-1-row: 55px;
+    --height-4-row: 220px;
+    --height-dist: 5px;
+    --height--dist: -5px;
+}
+* { box-sizing: border-box;}
+html { width: 100%;}
+body {
+    height: 100%;
+    margin: 0;
+    background-color: var(--color-light);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*   HEADER   */
+.header h1 { 
+    margin: 0 0 0 0;
+    padding: .6em;
+    text-align: center;
+}
+
+/*   MAIN   */
+main {
+    min-width: 910px;
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto 50px auto;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--height-dist);
+}
+.header { grid-area: 1/1/2/4; }
+nav     { grid-area: 2/1/3/2; }
+section { grid-area: 2/2/3/3; }
+aside   { grid-area: 2/3/3/4; }
+
+/* блок с навигацией по породам котиков*/
+nav { 
+    display: flex;
+    flex-flow: column;
+
+    background: var(--color-middle);
+}
+
+input.breed-input     { display: none;}
+.breed-label          { border-bottom: 1px solid var(--color-dark); font-size: 1.1em; padding: auto; padding-left: .8em; padding-top: .8em; height: var(--height-1-row);}
+.breed-input:nth-of-type(4):checked ~ nav label:nth-of-type(4),
+.breed-input:nth-of-type(3):checked ~ nav label:nth-of-type(3),
+.breed-input:nth-of-type(2):checked ~ nav label:nth-of-type(2),
+.breed-input:nth-of-type(1):checked ~ nav label:nth-of-type(1) { background: var(--color-dark); color: white; }
+label.breed-label:hover, input.rating-input, input#descending-input { cursor: pointer;}
+
+input[name="abyssinian-input"]:checked ~ section .not-abyssinian,
+input[name="british-input"]:checked    ~ section .not-british,
+input[name="russian-input"]:checked    ~ section .not-russian,
+input[name="siamese-input"]:checked    ~ section .not-siamese { opacity: .3; transition: .5s;}
+
+input[name="abyssinian-input"]:checked ~ section .abyssinian,
+input[name="british-input"]:checked    ~ section .british,
+input[name="russian-input"]:checked    ~ section .russian,
+input[name="siamese-input"]:checked    ~ section .siamese { opacity: 1;}
+
+
+/* блок с котиками*/
+section {
+    width: 100%;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--height-dist);
+}                         /* автозаполнение сетки section котиками*/
+section :nth-child(1n) { grid-column: 1 span; width: 100%;}
+section :nth-child(2n) { grid-column: 2 span; width: 100%;}
+section :nth-child(3n) { grid-column: 1 span; width: 100%;}
+section :nth-child(4n) { grid-column: 1 span; width: 100%;}
+section :nth-child(5n) { grid-column: 1 span; width: 100%;}
+section :nth-child(6n) { grid-column: 2 span; width: 100%;}
+section :nth-child(7n) { grid-column: 1 span; width: 100%;}
+section :nth-child(8n) { grid-column: 3 span; width: 100%;}
+section .cat {
+    height: 220px;
+}
+section .cat img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+section .cat:hover { cursor: pointer;}
+section .cat:hover::after {
+    content: attr(data-hint);
+    display: inline-block;
+    position: relative;
+    bottom: 52px;
+    left: 0px;
+
+    background: rgba(85, 85, 85, 0.774);
+    color: #fff;
+    padding: 10px;
+}
+
+/* блок с рейтингом пород котиков*/
+aside .rating  { background: var(--color-middle) }
+aside .rating {
+    float: top;
+    padding: .2em;
+}
+aside .rating h3 {
+    margin: 0;
+
+    color: rgb(202, 1, 28);
+    font-weight: lighter;
+    text-transform: uppercase;
+}
+#categories {
+    display: flex;
+    flex-direction: column;
+}
+.descending-label, #descending-input { font-size: small;}
+aside .rating-cat {width: 100%; margin: 5px auto;}
+input#descending-input:checked ~ #categories .level_10 { order: 0;}
+input#descending-input:checked ~ #categories .level_9  { order: 1;}
+input#descending-input:checked ~ #categories .level_8  { order: 2;}
+input#descending-input:checked ~ #categories .level_7  { order: 3;}
+input#descending-input:checked ~ #categories .level_6  { order: 4;}
+input#descending-input:checked ~ #categories .level_5  { order: 5;}
+input#descending-input:checked ~ #categories .level_4  { order: 6;}
+input#descending-input:checked ~ #categories .level_3  { order: 7;}
+input#descending-input:checked ~ #categories .level_2  { order: 8;}
+input#descending-input:checked ~ #categories .level_1  { order: 9;}
+input#descending-input:checked ~ #categories .level_0  { order: 10;}
+input#descending-input:checked ~ #categories .rating-cat { transition: .5s;}
+/* стиль ползунка  для хрома, яндекса, оперы и сафари */
+.rating-input { 
+    -webkit-appearance: none;
+} 
+.rating-input:focus { outline : none;}
+/*   стиль полосы прогресса в зависимости от value */
+.rating-input[value="0"] {background:-webkit-linear-gradient(left ,rgb(238, 55, 79) 0%, rgb(238, 55, 79) 2%, var(--color-middle ) 2%, var(--color-middle ) 100%);}
+.rating-input[value="1"] {background:-webkit-linear-gradient(left ,rgb(238, 55, 79) 0%, white 10%, var(--color-middle ) 10%, var(--color-middle ) 100%);}
+.rating-input[value="2"] {background:-webkit-linear-gradient(left ,rgb(238, 55, 79) 0%, white 20%, var(--color-middle ) 20%, var(--color-middle ) 100%);}
+.rating-input[value="3"] {background:-webkit-linear-gradient(left ,rgb(238, 55, 79) 0%, white 30%, var(--color-middle ) 30%, var(--color-middle ) 100%);}
+.rating-input[value="4"] {background:-webkit-linear-gradient(left ,rgb(238, 55, 79) 0%, white 40%, var(--color-middle ) 40%, var(--color-middle ) 100%);}
+.rating-input[value="5"] {background:-webkit-linear-gradient(left ,rgb(252, 255, 77) 0%, white 50%, var(--color-middle ) 50%, var(--color-middle ) 100%);}
+.rating-input[value="6"] {background:-webkit-linear-gradient(left ,rgb(252, 255, 77) 0%, white 60%, var(--color-middle ) 60%, var(--color-middle ) 100%);}
+.rating-input[value="7"] {background:-webkit-linear-gradient(left ,rgb(252, 255, 77) 0%, white 70%, var(--color-middle ) 70%, var(--color-middle ) 100%);}
+.rating-input[value="8"] {background:-webkit-linear-gradient(left ,rgb(252, 255, 77) 0%, white 80%, var(--color-middle ) 80%, var(--color-middle ) 100%);}
+.rating-input[value="9"] {background:-webkit-linear-gradient(left ,rgb(39, 240, 66) 0%, white 90%, var(--color-middle ) 90%, var(--color-middle ) 100%);}
+.rating-input[value="10"] {background:-webkit-linear-gradient(left ,rgb(39, 240, 66) 0%, white 100%);}
+
+
+/*   стиль ползунка  */
+.rating-input::-webkit-slider-thumb  /* стиль ползунка  для хрома, яндекса, оперы и сафари */
+{
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background-color: rgba(128, 128, 128, 0);
+}
+.rating-input::-moz-range-thumb,     /* стиль ползунка  для Mozilla */
+.rating-input::-ms-thumb             /* стиль ползунка  для InternetExplorer */
+{
+    width: 80%;
+    height: 10px;
+    background-color: rgba(128, 128, 128, 0);
+}
+
+/*   FOOTER   */
+footer {
+    position: fixed;
+    bottom: 0;
+    padding: 14px;
+    background: var(--color-light);
+    border-top: 1px solid var(--color-dark);
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}

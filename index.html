@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <title>Бабуленькины котятки</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        
+
+        <main>   
+            <div class="header"><h1>Бабуленькины котятки</h1></div>
+
+            <input type="checkbox" value="0" id="abyssinian"   class="breed-input" name="abyssinian-input">
+            <input type="checkbox" value="1" id="british"      class="breed-input" name="british-input"> 
+            <input type="checkbox" value="2" id="russian-blue" class="breed-input" name="russian-input">    
+            <input type="checkbox" value="3" id="siamese"      class="breed-input" name="siamese-input">
+
+            <nav>
+                <label for="abyssinian"   id="label-abyssinian"   class="breed-label">Абиссинская</label>
+                <label for="british"      id="label-british"      class="breed-label">Британская</label>     
+                <label for="russian-blue" id="label-russian-blue" class="breed-label">Русская голубая</label>
+                <label for="siamese"      id="label-siamese"      class="breed-label">Сиамская</label>       
+            </nav>
+           
+            <section class="cats">
+                <!-- классы нужны для фильтрации по породе, 
+                    сетка автоматически заполняется новыми блоками с котиками -->
+                <div class="cat siamese not-abyssinian not-british not-russian" data-hint="Пенка, 3 года">    <img src="./img/сиамская3.jpg"         alt="Пенка, 3 года"></div>
+                <div class="cat abyssinian not-british not-russian not-siamese" data-hint="Кремчик, 2 года">  <img src="./img/абиссинская2.jpg"      alt="Кремчик, 2 года"></div>
+                <div class="cat british not-abyssinian not-russian not-siamese" data-hint="Луна, 4 года">     <img src="./img/британская4.png"       alt="Луна, 4 года"></div>
+                <div class="cat russian not-abyssinian not-british not-siamese" data-hint="Дымка, 4 года">    <img src="./img/русская_голубая2.jpg"  alt="Дымка, 4 года"></div>
+                <div class="cat british not-abyssinian not-russian not-siamese" data-hint="Гоша, 4 года">     <img src="./img/британская2.jpg"       alt="Гоша, 4 года"></div>
+                <div class="cat siamese not-abyssinian not-british not-russian" data-hint="Оушен, 4 года">    <img src="./img/сиамская2.jpg"         alt="Оушен, 4 года"></div>
+                <div class="cat abyssinian not-british not-russian not-siamese" data-hint="Ушастик, 1 год">   <img src="./img/абиссинская3.png"      alt="Ушастик, 1 год"></div>
+                <div class="cat russian not-abyssinian not-british not-siamese" data-hint="Звездочка, 3 года"><img src="./img/русская_голубая1.jpg"  alt="Звездочка, 3 года"></div>
+                <div class="cat british not-abyssinian not-russian not-siamese" data-hint="Усатик, 3 года">   <img src="./img/британская1.jpg"       alt="Усатик, 3 года"></div>
+                <div class="cat russian not-abyssinian not-british not-siamese" data-hint="Петруша, 1 год">   <img src="./img/русская_голубая3.jpg"  alt="Петруша, 1 год"></div>
+                <div class="cat siamese not-abyssinian not-british not-russian" data-hint="Серега, 3 года">   <img src="./img/сиамская1.jpg"         alt="Серега, 3 года"></div>
+                <div class="cat british not-abyssinian not-russian not-siamese" data-hint="Облачко, 4 года">  <img src="./img/британская3.jpg"       alt="Облачко, 4 года"></div>
+                <div class="cat abyssinian not-british not-russian not-siamese" data-hint="Персик, 2 года">   <img src="./img/абиссинская1.jpg"      alt="Персик, 2 года"></div>
+                
+            </section>
+            
+            <aside>
+                <div class="rating">
+                    <h3>Рейтинг</h3>
+                    <input type="checkbox" value="1" name="descending-input" id="descending-input"><label for="descending-input" class="descending-label">по убыванию</label>
+                    <div id="categories">
+                        <label for="rating-input-abyssinian" class="rating-cat level_9 rating-label">Абиссинская
+                            <input id="rating-input-abyssinian"  class="rating-input level_9" name="Абиссинская" type="range" min="0" max="10" step="1" value="9">
+                            9
+                        </label>
+                        
+                        <label for="rating-input-british" class="rating-cat level_8 rating-label">Британская
+                            <input id="rating-input-british"  class="rating-input level_8" name="Британская" type="range" min="0" max="10" step="1" value="8">
+                            8
+                        </label>
+                        
+                        <label for="rating-input-russian" class="rating-cat level_10 rating-label">Русская голубая
+                            <input id="rating-input-russian"  class="rating-input level_10" name="Русская голубая" type="range" min="0" max="10" step="1" value="10">
+                            10
+                        </label>
+                        
+                        <label for="rating-input-siamese" class="rating-cat level_4 rating-label">Сиамская
+                            <input id="rating-input-siamese"  class="rating-input" name="Сиамская" type="range" min="0" max="10" step="1" value="4">
+                            4
+                        </label>
+                        
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer itemscope itemtype="http://schema.org/Organization" id="autor">
+            <span itemprop="brand">&copy; ООО Бабуленькины котятки, 2015</span>
+            <span itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                <span itemprop="streetAddress"><a href="#" title="адрес">Наш адрес: улица Котовая, д.5</a></span>
+            </span>
+        </footer>
+    </body>
+</html>
